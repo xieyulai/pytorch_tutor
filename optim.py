@@ -1,0 +1,21 @@
+#coding=utf-8
+
+from math import pi
+import torch
+import torch.optim
+
+x = torch.tensor([pi/3,pi/6],requires_grad=True)#自变量
+
+optimizer = torch.optim.SGD([x,],lr=0.1,momentum=0)
+
+for step in range(11):
+
+    if step:
+        optimizer.zero_grad()
+        f.backward(retain_graph=True)#计算梯度
+        optimizer.step()#更新x的值
+
+    f = -((x.cos() **2).sum())**2 #函数
+
+    print('step {}: x= {},f(x) = {}'.format(step,x.tolist(),f))
+
