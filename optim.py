@@ -6,7 +6,7 @@ import torch.optim
 
 x = torch.tensor([pi/3,pi/6],requires_grad=True)#自变量
 
-optimizer = torch.optim.SGD([x,],lr=0.1,momentum=0)
+optimizer = torch.optim.SGD([x,],lr=0.1,momentum=0)#x的值会被更新
 
 for step in range(11):
 
@@ -17,5 +17,6 @@ for step in range(11):
 
     f = -((x.cos() **2).sum())**2 #函数
 
-    print('step {}: x= {},f(x) = {}'.format(step,x.tolist(),f))
+    print('step {}: x= {},x_grad={},f(x) = {}'.format(step,x.tolist(),x.grad,f))
+
 
