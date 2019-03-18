@@ -13,14 +13,17 @@
 ## pytorch的autograd
 - 对于输出是标量的函数(scalar valued function),可以显式的求导
 - 对于输出是一个向量(vector valued function)的,不能显式求导
-- Y = [y1,y2,...,ym]<sup>T</sup>, X = [x1,x2,...,xm]<sup>T</sup>, Y(向量) = f(X), J = Jacobian Matrix 
+- **Y** = [y1,y2,...,ym]<sup>T</sup>, **X **= [x1,x2,...,xm]<sup>T</sup>, **Y**(向量) = f(**X**), **J** = Jacobian Matrix
+- Jacobian Matrixd 定义如下
 $$
 \begin{matrix}
-∂y1/∂x1 & ... & ∂y1/∂xn\\
-... & ... & ...\\
-∂ym/∂x1 & ... & ∂ym/∂xn\\
+∂y1/∂x1 & \cdots & ∂y1/∂xn\\
+\vdots & \ddots & \vdots \\
+∂ym/∂x1 & \cdots & ∂ym/∂xn\\
 \end{matrix}
 $$
-- l(标量) = g(y),v=(∂l/∂y1,∂l/∂y2,...,∂l/∂ym)<sup>T</sup>
-- Jacobian-Vector product 是l关于X的梯度 
+- *l*(标量) = g(**Y**),**V**=(∂l/∂y1,∂l/∂y2,...,∂l/∂ym)<sup>T</sup>
+- **Y**关于**X**的梯度是**J**雅可比矩阵,**l**关于**Y**的梯度是**V**,根据链式法则(Chain Rule),d*l*/d**X**=d*l*/d**Y** * d**Y**/D**X**
+- Jacobian-Vector product 即**J**<sup>T</sup> * **V** 是*l*关于**X**的梯度
+- 对于标量函数,f.backward() = f.backward(torch.tensor(1.)),因为标量的**V**就是1.
 
