@@ -17,6 +17,9 @@
 - 误差的反向传播是高效计算权重参数的梯方法度
 - 链式法则:复合函数的倒数可以用构成复合函数的各个倒数的乘积表示 
 
+## Batch
+- 每一批batch的样本都共同(一起)作用在参数上,而不是一个一个的
+
 ## pytorch的autograd
 - 对于输出是标量的函数(scalar valued function),可以显式的求导
 - 对于输出是一个向量(vector valued function)的,不能显式求导
